@@ -9,7 +9,7 @@
       flag=flag.toLowerCase(); 
       var word=document.getElementById('word').value;
       var langid=document.getElementById('lang').value;
-      if(word=='Input keyword')return;
+      if(word=='') return;
       var url;
       if(flag=='c++'||flag=='cpp'|| flag=='c')
         url='http://www.cplusplus.com/search.do?q=';
@@ -35,23 +35,13 @@
         url='https://stackoverflow.com/search?q=';
       window.open(url+word);
     }
-    function tip(flag){
-      var obj=document.getElementById('word);
-      if(flag==0){
-        if (obj.value=='Input keyword')
-          obj.value='';
-      }else if(flag==1){
-        if (obj.value=='')
-          obj.value='Input keyword';
-      }
-    }
   </script>
 </head>
 
 <body>
   <a href='osrc.html'>Access open source</a><br><br><br>
 
-  <input id='word' type='text' autofocus onfocusin='tip(0)' onfocusout='tip(1)'>
+  <input id='word' type='text' autofocus>
   <put>&nbsp;&nbsp;The language of the search results: </put>
   <select id='lang'>
     <option value='1' selected>English</option>
