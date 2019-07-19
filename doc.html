@@ -18,17 +18,19 @@
         else if(langid=='2') lang='zh.';
         else lang='en.';
           url='https://'+lang+'cppreference.com/mwiki/index.php?search=';
-      } else if(flag=='ms'||flag=='msdn'|| flag=='microsoft'){
+      }else if(flag=='msn')
+        url='https://developer.mozilla.org/search?q=';
+      else if(flag=='ms'||flag=='msdn'|| flag=='microsoft'){
         if(langid=='1') lang='en-us';
         else if(langid=='2') lang='zh-cn';
         else lang='en-us';
         url='https://www.microsoft.com/'+lang+'/search/explore?q=';
       } else if(flag=='project')
         url='https://github.com/search?q=';
+     else if (flag=='csdn')
+        url='https://so.csdn.net/so/search/s.do?q=';
       else if(flag=='bing')
         url='https://bing.com/search?q=';
-      else if (flag=='csdn')
-        url='https://so.csdn.net/so/search/s.do?q=';
       else if (flag=='stack')
         url='https://stackoverflow.com/search?q=';
       window.open(url+word);
@@ -58,11 +60,12 @@
   <button type='button' onclick='search("c++")'>Search For C++</button>
   <button type='button' onclick='search("c++ref")'>Search For C++Ref</button>
   <button type='button' onclick='search("stack")'>Search By Stack Overflow</button>
+  <button type='button' onclick='search("msn")'>Search By MSN</button>
   <button type='button' onclick='search("msdn")'>Search By MSDN</button>
   <button type='button' onclick='search("csdn")'>Search By CSDN</button>
   <button type='button' onclick='search("project")'>Search project</button>
   <button type='button' onclick='search("bing")'>Search By BING</button><br><br>
-
+  
   <ul>
     <li><a href='http://www.cplusplus.com/' target='_blank'>C++</a> </li>
     <li><a href='https://cppreference.com/' target='_blank'>C++Reference</a> </li>
