@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='utf-8'>
+  <title>Help documentation</title>
+  <style type="text/css">a{color:rgb(0,100,200);}put{color:rgb(0,100,200);}</style>
+  <script>
+    function search(flag){
+      flag=flag.toLowerCase(); 
+      var word=document.getElementById('word').value;
+      var langid=document.getElementById('lang').value;
+      if(word=='Input keyword')return;
+      var url;
+      if(flag=='c++'||flag=='cpp'|| flag=='c')
+        url='http://www.cplusplus.com/search.do?q=';
+      else if(flag=='c++ref'||flag=='cppref'){
+        if(langid=='1') lang='en.';
+        else if(langid=='2') lang='zh.';
+        else lang='en.';
+          url='https://'+lang+'cppreference.com/mwiki/index.php?search=';
+      } else if(flag=='ms'||flag=='msdn'|| flag=='microsoft'){
+        if(langid=='1') lang='en-us';
+        else if(langid=='2') lang='zh-cn';
+        else lang='en-us';
+        url='https://www.microsoft.com/'+lang+'/search/explore?q=';
+      } else if(flag=='project')
+        url='https://github.com/search?q=';
+      else if(flag=='bing')
+        url='https://bing.com/search?q=';
+      else if (flag=='csdn')
+        url='https://so.csdn.net/so/search/s.do?q=';
+      else if (flag=='stack')
+        url='https://stackoverflow.com/search?q=';
+      window.open(url+word);
+    }
+    function tip(flag){
+      if(flag==0){
+        if (obj.value=='Input keyword')
+          obj.value='';
+      }else if(flag==1){
+        if (obj.value=='')
+          obj.value='Input keyword';
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <a href='osrc.html'>Access open source</a><br><br><br>
+
+  <input id='word' type='text' autofocus onfocusin='tip(0)' onfocusout='tip(1)'>
+  <put>&nbsp;&nbsp;The language of the search results: </put>
+  <select id='lang'>
+    <option value='1' selected>English</option>
+    <option value='2'>简体中文</option>
+  </select><br><br>
+
+  <button type='button' onclick='search("c++")'>Search For C++</button>
+  <button type='button' onclick='search("c++ref")'>Search For C++Ref</button>
+  <button type='button' onclick='search("stack")'>Search By Stack Overflow</button>
+  <button type='button' onclick='search("msdn")'>Search By MSDN</button>
+  <button type='button' onclick='search("csdn")'>Search By CSDN</button>
+  <button type='button' onclick='search("project")'>Search project</button>
+  <button type='button' onclick='search("bing")'>Search By BING</button><br><br>
+
+  <ul>
+    <li><a href='http://www.cplusplus.com/' target='_blank'>C++</a> </li>
+    <li><a href='https://cppreference.com/' target='_blank'>C++Reference</a> </li>
+    <li><a href='https://docs.microsoft.com/' target='_blank'>Microsoft</a> </li>
+    <li><a href='https://github.com/' target='_blank'>GitHub</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/' target='_blank'>Windows Desktop Development</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/api/' target='_blank'>Windows API Reference</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/win32/apiindex/api-index-portal/' target='_blank'>API Index</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/controls/window-controls/' target='_blank'>Window Controls</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/winmsg/windowing/' target='_blank'>Windows and Messages</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/menurc/resources/' target='_blank'>Menus and Other Resources</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/gdi/windows-gdi/' target='_blank'>WindowsGDI</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/gdiplus/-gdiplus-gdi-start/' target='_blank'>WindowsGDI+</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/direct2d/' target='_blank'>Direct2D</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/directdd/' target='_blank'>Direct3D</a> </li>
+    <li><a href='https://docs.microsoft.com/en-us/windows/desktop/winrt/reference/' target='_blank'>Windows Runtime C++ Reference</a> </li>
+  </ul>
+  <br>
+
+  <put>Friend links:</put>
+    <ul>
+    <li><a href='https://www.citext.cn/' target='_blank'>CItext Blog</a> </li>
+  </ul>
+
+</body>
+
+</html>
