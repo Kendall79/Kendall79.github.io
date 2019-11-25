@@ -1,1 +1,176 @@
 
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title>Search</title>
+    <style type="text/css">
+        a {
+            color: rgb(0, 100, 200);
+            float: right;
+        }
+    </style>
+    <script>
+    function checkenter(){
+         if(event.keyCode==13){
+             search();
+         }
+    }
+    function getvalue(id){ 
+        return document.getElementById(id).value;
+    }
+    function goto(){
+        var method=getvalue('method'), lang=getvalue('lang');
+        var langstr, url;
+        switch (method){
+            case '1':
+                url='https://bing.com/';
+                break;
+            case '2':
+                url='http://www.cplusplus.com/';
+                break;
+            case '3':
+                if(lang=='1'){
+                    langstr='en.';
+                }else if(lang=='2'){
+                    langstr='zh.';
+                } 
+                url='https://'+langstr+'cppreference.com/';
+                break;
+            case '4':
+                url='https://www.baidu.com/';
+                break;
+            case '5':
+                url='https://csdn.net/';
+                break;
+            case '6':
+                url='https://github.com/';
+                break;
+            case '7':
+                url='https://google.com/';
+                break;
+            case '8':
+                url='https://developer.mozilla.org/';
+                break;
+            case '9':
+                if(lang=='1'){
+                    langstr='en-us'
+                }else if(lang=='2'){
+                    langstr='zh-cn';
+                }
+                url='https://www.microsoft.com/'+langstr+'/';
+                break;
+            case '10':
+                 url='https://stackoverflow.com/';
+                break;
+            case '11':
+                url='https://www.sogou.com/';
+                break;
+            case '12':
+                if(lang=='1'){
+                    langstr='en.';
+                } else if(lang=='2'){
+                     langstr='zh.';
+                }
+                url='https://'+langstr+'wikibooks.org/';
+            break;
+        }
+        window.open(url);
+    }
+    function search(){
+        var word=getvalue('word');
+        if(word.length==0)
+            return;
+        var method=getvalue('method'), lang=getvalue('lang');
+        var langstr, url;
+        switch (method){
+            case '1':
+                url='https://bing.com/search?q=';
+                break;
+            case '2':
+                url='http://www.cplusplus.com/search.do?q=';
+                break;
+            case '3':
+                if(lang=='1'){
+                    langstr='en.';
+                }else if(lang=='2'){
+                    langstr='zh.';
+                } 
+                url='https://'+langstr+'cppreference.com/mwiki/index.php?search=';
+                break;
+            case '4':
+                url='https://www.baidu.com/s?ie=utf-8&wd=';
+                break;
+            case '5':
+                url='https://so.csdn.net/so/search/s.do?q=';
+                break;
+            case '6':
+                url='https://github.com/search?q=';
+                break;
+            case '7':
+                url='https://google.com/search?q=';
+                break;
+            case '8':
+                url='https://developer.mozilla.org/search?q=';
+                break;
+            case '9':
+                if(lang=='1'){
+                    langstr='en-us'
+                }else if(lang=='2'){
+                    langstr='zh-cn';
+                }
+                url='https://www.microsoft.com/'+langstr+'/search/explore?q=';
+                break;
+            case '10':
+                 url='https://stackoverflow.com/search?q=';
+                break;
+            case '11':
+                url='https://www.sogou.com/sogou?query=';
+                break;
+            case '12':
+                if(lang=='1'){
+                    langstr='en.';
+                } else if(lang=='2'){
+                     langstr='zh.';
+                }
+                url='https://'+langstr+'wikibooks.org/w/index.php?search=';
+            break;
+        }
+        window.open(url+word);
+    }
+    </script>
+</head>
+
+<body>
+    <br>
+    <a href='https://translate.google.cn/' target='_blank'>Google translate</a><br><br><br><br><br><br><br><br>
+    <center>
+        <img src="github.png"></img><br><br>
+        <select id='lang'>
+            <option value='1' selected>English</option>
+            <option value='2'>简体中文</option> 
+        </select>
+        <select id='method'>
+             <option value='1' selected>bing</option>
+             <option value='2'>cplusplus</option>
+             <option value='3'>cppreference</option> 
+             <option value='4'>baidu</option> 
+             <option value='5'>CSDN</option> 
+             <option value='6'>github</option>
+             <option value='7'>google</option> 
+             <option value='8'>MSN(web)</option>
+             <option value='9'>MSDN</option>
+             <option value='10'>Stack Overflow</option>
+             <option value='11'>sougou</option>
+             <option value='12'>Wiki Books</option> 
+        </select>
+        <input id='word' type='text' onkeydown='checkenter()' maxlength='255' autofocus></input>
+        <input type='button' onclick='search()' value='Search'></input>
+        <input type='button' onclick='goto()' value='Goto'></input>
+    </center>
+    <br><br><br><br><br>
+
+</body>
+
+</html>
