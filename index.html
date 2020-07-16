@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="DESCRIPTION"
+content="This is the homepage of Indexer">
+<meta name="KEYWORDS"
+content="Searcher,Indexer,search,help">
+
+<title id="title">Simple Indexer</title>
+<style>
+	.other { float:right; }
+</style>
+</head>
+
+<body> <center>
+	<a href="links.html" class="other" target="_blank">Other</a>
+	<br><br><br><br>
+	<a href="https://github.com/" target="_blank"><img src="github.png"></img></a><br><br>
+	All results<input id="allResults" type="checkbox"></input> <!-- 查看所有结果 -->
+	<input id="word" type="text" onKeyDown="checkEnterKey()" width="100" maxLength="255" autofocus></input>
+	<button onClick="search()">Search</button> <!-- 搜索 -->
+	<button onClick="advancedSearch()">Advanced search</button> <!-- 高级搜索 -->
+	<br><br>
+	<button onClick="searchSln()">Search solution</button> <!-- 搜索解决方案 -->
+	<button onClick="searchLibrary()">Search Program Library</button> <!-- 搜索程序库 -->
+	<button onClick="searchCppFn()">Search C++ function</button> <!-- 搜索C++函数 -->
+	<button onClick="searchWinAPI()">Search Windows API</button> <!-- 搜索Windows API -->
+	</div>
+	<script>
+	function runSearch(urls) {
+		if (urls==null) return;
+		var word=document.getElementById("word").value;
+		if(word.length==0) return;
+
+		var obj=document.getElementById("allResults");
+		var allResults=obj.checked;
+		if(allResults) {
+			for(var i=0;i<urls.length;i++) {
+				window.open(urls[i]+word);
+			}
+		} else {
+			if (urls.length>0) window.open(urls[0]+word);
+		}
+	}
+	
+	function advancedSearch() {
+		var word=document.getElementById("word").value;
+		if(word.length>0)
+			window.open("https://bing.com/search?q="
+				+word+"&ensearch=1");
+	}
+	
+	function checkEnterKey() { if(event.keyCode==13) search(); }
+	
+	function search() {
+		var word=document.getElementById("word").value;
+		if(word.length==0) return;
+
+		const urlsDef = [ "https://bing.com/search?q=",
+						"https://www.baidu.com/s?ie=utf-8&wd=",
+						"https://zh.wikibooks.org/w/index.php?search=",
+						"https://google.com/search?q=",
+						"https://www.sogou.com/web?query=" ];
+		runSearch(urlsDef);
+	}
+	
+	function searchSolution() {
+		var word=document.getElementById("word").value;
+		if(word.length==0) return;
+
+		const urlsDef = [ "https://stackoverflow.com/search?q=",
+						"https://www.zhihu.com/search?q=",
+						"https://so.csdn.net/so/search/s.do?q=" ];
+		runSearch(urlsDef);
+	}
+
+	function searchLibrary() {
+		var word=document.getElementById("word").value;
+		if(word.length==0) return;
+
+		const urlsDef = [ "https://github.com/search?q=",
+						"https://stackoverflow.com/search?q=",
+						"https://sourceforge.net/directory/?q=" ];
+		runSearch(urlsDef);
+	}
+	
+	function searchCppFn() {
+		var word=document.getElementById("word").value;
+		if(word.length==0) return;
+
+		const urlsDef = [ "https://en.cppreference.com/mwiki/index.php?search=string",
+						"http://www.cplusplus.com/search.do?q=",
+						"https://docs.microsoft.com/en-us/search/?search=",
+						"https://so.csdn.net/so/search/s.do?q=" ];
+		runSearch(urlsDef);
+	}
+	
+	function searchWinAPI() {
+		var word=document.getElementById("word").value;
+		if(word.length==0) return;
+
+		const urlsDef = [ "https://docs.microsoft.com/en-us/search/?search=",
+						"https://so.csdn.net/so/search/s.do?q=" ];
+		runSearch(urlsDef);
+	}
+
+	function searchThesis() { 
+		var word=document.getElementById("word").value;
+		if(word.length==0) return;
+
+		const urlsDef = [ "https://docs.microsoft.com/en-us/search/?search=" ];
+		runSearch(urlsDef);
+	}
+	</script>
+	
+</center>
+</body>
+
+</html>
