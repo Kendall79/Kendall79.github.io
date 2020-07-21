@@ -2,11 +2,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="DESCRIPTION"
-content="This is the homepage of Searcher">
+	content="This is the homepage of Searcher">
 <meta name="KEYWORDS"
-content="Searcher,Indexer,search,help">
+	content="Searcher,Indexer,search,help">
 
-<title id="title">Simple Searcher</title>
+<title>Simple Searcher</title>
 <style>
 	.other { float:right; }
 </style>
@@ -19,96 +19,85 @@ content="Searcher,Indexer,search,help">
 	All results<input id="allResults" type="checkbox"></input> <!-- 查看所有结果 -->
 	<input id="word" type="text" onKeyDown="checkEnterKey()" width="100" maxLength="255" autofocus></input>
 	<button onClick="search()">Search</button> <!-- 搜索 -->
-	<button onClick="advancedSearch()">Advanced search</button> <!-- 高级搜索 -->
+	<button onClick="advanced()">Advanced Search</button> <!-- 高级搜索 -->
 	<br><br>
-	<button onClick="searchSln()">Search solution</button> <!-- 搜索解决方案 -->
-	<button onClick="searchLibrary()">Search Program Library</button> <!-- 搜索程序库 -->
-	<button onClick="searchCppFn()">Search C++ function</button> <!-- 搜索C++函数 -->
-	<button onClick="searchWinAPI()">Search For Windows</button> <!-- 针对Windows搜索 -->
+	<button onClick="searchSln()">Search Solution</button> <!-- 搜索解决方案 -->
+	<button onClick="searchLib()">Search Program Library</button> <!-- 搜索程序库 -->
+	<button onClick="searchCppFn()">Search C++ Function</button> <!-- 搜索C++函数 -->
+	<button onClick="searchWinOS()">Search API For WinOS</button> <!-- 针对Windows操作系统搜索 -->
 	</div>
 	<script>
-	function runSearch(urls) {
-		if (urls==null) return;
-		var word=document.getElementById("word").value;
-		if(word.length==0) return;
+	//检查回车键
+	function checkEnterKey() { if(event.keyCode==13) { search(); } }
 
-		var obj=document.getElementById("allResults");
-		var allResults=obj.checked;
-		if(allResults) {
-			for(var i=0;i<urls.length;i++) {
-				window.open(urls[i]+word);
-			}
-		} else {
-			if (urls.length>0) window.open(urls[0]+word);
+	//高级搜索
+	function advanced() {
+		var word=document.getElementById("word").value;
+		if(word.length>0) {
+			window.open("https://bing.com/search?q="+word+"&ensearch=1");
 		}
 	}
-	
-	function advancedSearch() {
+
+	//执行搜索(内部)
+	function runSearch(urls) {
+		if(urls==null) { return; }
+
 		var word=document.getElementById("word").value;
-		if(word.length>0)
-			window.open("https://bing.com/search?q="
-				+word+"&ensearch=1");
+		if(word.length==0) { return; }
+
+		var allResults=document.getElementById("allResults").checked;
+		if(allResults) {
+			for(var i=0;i<urls.length;i++) { window.open(urls[i]+word); }
+		} else {
+			if(urls.length>0) { window.open(urls[0]+word); }
+		}
 	}
-	
-	function checkEnterKey() { if(event.keyCode==13) search(); }
-	
+
+	//搜索
 	function search() {
-		var word=document.getElementById("word").value;
-		if(word.length==0) return;
-
-		const urlsDef = [ "https://bing.com/search?q=",
-						"https://www.baidu.com/s?ie=utf-8&wd=",
-						"https://zh.wikibooks.org/w/index.php?search=",
-						"https://google.com/search?q=",
-						"https://www.sogou.com/web?query=" ];
+		const urlsDef = ["https://bing.com/search?q=",
+				"https://www.baidu.com/s?ie=utf-8&wd=",
+				"https://zh.wikibooks.org/w/index.php?search=",
+				"https://google.com/search?q=",
+				"https://www.sogou.com/web?query="];
 		runSearch(urlsDef);
 	}
 	
-	function searchSolution() {
-		var word=document.getElementById("word").value;
-		if(word.length==0) return;
-
-		const urlsDef = [ "https://stackoverflow.com/search?q=",
-						"https://www.zhihu.com/search?q=",
-						"https://so.csdn.net/so/search/s.do?q=" ];
+	//搜索解决方案
+	function searchSln() {
+		const urlsDef = ["https://stackoverflow.com/search?q=",
+				"https://www.zhihu.com/search?q=",
+				"https://so.csdn.net/so/search/s.do?q="];
 		runSearch(urlsDef);
 	}
 
-	function searchLibrary() {
-		var word=document.getElementById("word").value;
-		if(word.length==0) return;
-
+	//搜索程序库
+	function searchLib() {
 		const urlsDef = [ "https://github.com/search?q=",
-						"https://stackoverflow.com/search?q=",
-						"https://sourceforge.net/directory/?q=" ];
+				"https://stackoverflow.com/search?q=",
+				"https://sourceforge.net/directory/?q="];
 		runSearch(urlsDef);
 	}
-	
+
+	//搜索C++函数
 	function searchCppFn() {
-		var word=document.getElementById("word").value;
-		if(word.length==0) return;
-
-		const urlsDef = [ "https://en.cppreference.com/mwiki/index.php?search=",
-						"http://www.cplusplus.com/search.do?q=",
-						"https://docs.microsoft.com/en-us/search/?search=",
-						"https://so.csdn.net/so/search/s.do?q=" ];
-		runSearch(urlsDef);
-	}
-	
-	function searchWinAPI() {
-		var word=document.getElementById("word").value;
-		if(word.length==0) return;
-
-		const urlsDef = [ "https://docs.microsoft.com/en-us/search/?search=",
-						"https://so.csdn.net/so/search/s.do?q=" ];
+		const urlsDef = ["https://en.cppreference.com/mwiki/index.php?search=",
+				"http://www.cplusplus.com/search.do?q=",
+				"https://docs.microsoft.com/en-us/search/?search=",
+				"https://so.csdn.net/so/search/s.do?q="];
 		runSearch(urlsDef);
 	}
 
-	function searchThesis() { 
-		var word=document.getElementById("word").value;
-		if(word.length==0) return;
+	//针对Windows操作系统搜索
+	function searchWinOS() {
+		const urlsDef = ["https://docs.microsoft.com/en-us/search/?search=",
+				"https://so.csdn.net/so/search/s.do?q="];
+		runSearch(urlsDef);
+	}
 
-		const urlsDef = [ "https://docs.microsoft.com/en-us/search/?search=" ];
+	//搜索论文
+	function searchThesis() {
+		const urlsDef = ["xx.com"];
 		runSearch(urlsDef);
 	}
 	</script>
