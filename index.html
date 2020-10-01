@@ -1,104 +1,90 @@
-<html lang="en">
+<html lang="zh-cn">
 <head>
-<meta charset="utf-8">
-<meta name="DESCRIPTION"
-	content="This is the homepage of Searcher">
-<meta name="KEYWORDS"
-	content="Searcher,Indexer,search,help">
-
-<title>Searcher</title>
-<style>
-	.other { float:right; }
-</style>
+	<meta charset="utf-8">
+	<title>搜索器</title>
+	<style> .other{float:right;} </style>
 </head>
 
 <body> <center>
-	<a href="links.html" class="other" target="_blank">Other Links</a>
+	<a href="links.html" class="other" target="_blank">更多链接</a>
 	<br><br><br><br>
 	<a href="https://github.com/" target="_blank"><img src="github.png"></img></a><br><br>
-	All results<input id="allResults" type="checkbox"></input> <!-- 查看所有结果 -->
+	所有结果<input id="allResults" type="checkbox"></input>
 	<input id="word" type="text" onKeyDown="checkEnterKey()" width="100" maxLength="255" autofocus></input>
-	<button onClick="search()">Search</button> <!-- 搜索 -->
-	<button onClick="advanced()">Advanced Search</button> <!-- 高级搜索 -->
+	<button onClick="searchText()">搜索</button>
 	<br><br>
-	<button onClick="searchSln()">Search Solution</button> <!-- 搜索解决方案 -->
-	<button onClick="searchLib()">Search Program Library</button> <!-- 搜索程序库 -->
-	<button onClick="searchCpp()">Search C++</button> <!-- 针对C++搜索 -->
-	<button onClick="searchWinOS()">Search Microsoft Doc</button> <!-- 针对Windows操作系统搜索 -->
+	<button onClick="searchSln()">搜索解决方案</button>
+	<button onClick="searchLib()">搜索程序库</button>
+	<button onClick="searchCpp()">搜索 C++ 文档</button>
+	<button onClick="searchMsDoc()">搜索微软文档</button>
 	</div>
 	<script>
 	//检查回车键
 	function checkEnterKey() { if(event.keyCode==13) { search(); } }
 
-	//高级搜索
-	function advanced() {
-		var word=document.getElementById("word").value;
-		if(word.length>0) {
-			window.open("https://bing.com/search?q="+word+"&ensearch=1");
-		}
-	}
+	//搜索(内部)
+	function search(urls) {
+		if(urls == null) { return; }
 
-	//执行搜索(内部)
-	function runSearch(urls) {
-		if(urls==null) { return; }
+		var word = document.getElementById("word").value;
+		if(word.length == 0) { return; }
 
-		var word=document.getElementById("word").value;
-		if(word.length==0) { return; }
-
-		var allResults=document.getElementById("allResults").checked;
+		var allResults = document.getElementById("allResults").checked;
 		if(allResults) {
-			for(var i=0;i<urls.length;i++) { window.open(urls[i]+word); }
+			for(var i = 0; i < urls.length; i++) {
+				window.open(urls[i]+word);
+			}
 		} else {
-			if(urls.length>0) { window.open(urls[0]+word); }
+			if(urls.length > 0) { window.open(urls[0]+word); }
 		}
 	}
 
 	//搜索
-	function search() {
-		const urlsDef = ["https://bing.com/search?q=",
+	function searchText() {
+		const URLS = ["https://bing.com/search?q=",
 				"https://www.baidu.com/s?ie=utf-8&wd=",
 				"https://zh.wikibooks.org/w/index.php?search=",
 				"https://google.com/search?q=",
 				"https://www.sogou.com/web?query="];
-		runSearch(urlsDef);
+		search(URLS);
 	}
 	
 	//搜索解决方案
 	function searchSln() {
-		const urlsDef = ["https://stackoverflow.com/search?q=",
+		const URLS = ["https://stackoverflow.com/search?q=",
 				"https://www.zhihu.com/search?q=",
 				"https://so.csdn.net/so/search/s.do?q="];
-		runSearch(urlsDef);
+		search(URLS);
 	}
 
 	//搜索程序库
 	function searchLib() {
-		const urlsDef = [ "https://github.com/search?q=",
+		const URLS = [ "https://github.com/search?q=",
 				"https://stackoverflow.com/search?q=",
 				"https://sourceforge.net/directory/?q="];
-		runSearch(urlsDef);
+		search(URLS);
 	}
 
-	//搜索C++函数
+	//搜索C++文档
 	function searchCpp() {
-		const urlsDef = ["https://en.cppreference.com/mwiki/index.php?search=",
+		const URLS = ["https://en.cppreference.com/mwiki/index.php?search=",
 				"http://www.cplusplus.com/search.do?q=",
 				"https://docs.microsoft.com/en-us/search/?search=",
 				"https://so.csdn.net/so/search/s.do?q="];
-		runSearch(urlsDef);
+		search(URLS);
 	}
 
-	//针对Windows操作系统搜索
-	function searchWinOS() {
-		const urlsDef = ["https://docs.microsoft.com/en-us/search/?search=",
+	//搜索微软文档
+	function searchMsDoc() {
+		const URLS = ["https://docs.microsoft.com/en-us/search/?search=",
 				"https://so.csdn.net/so/search/s.do?q="];
-		runSearch(urlsDef);
+		search(URLS);
 	}
 
 	//搜索论文
 	function searchThesis() {
-		const urlsDef = ["xx.com"];
-		runSearch(urlsDef);
+		const URLS = ["t.com"];
+		search(URLS);
 	}
 	</script>
 	
