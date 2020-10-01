@@ -4,15 +4,17 @@
 ## 语言: 中文
 
 ## 可以获取的下载
- #### 操作系统镜像
+ #### [操作系统镜像](https://kendall79.github.io/img.html "kendall79.github.io")
   - Linux 系统镜像
   - Windows 系统镜像
- #### 软件
+ #### [软件](https://kendall79.github.io/soft.html "kendall79.github.io")
   - 虚拟机
   - 压缩/解压缩
 
  #### [命令行工具](https://kendall79.github.io/cmdline-tools.html "kendall79.github.io")
   - chocolatey
+  - 7z
+  - wget
 
 ## 可以获取的文档
  #### 编程语言:
