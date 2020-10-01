@@ -11,8 +11,8 @@
   - 虚拟机
   - 压缩/解压缩
 
- #### 命令行工具
-  - [chocolatey](https://chocolatey.org/ "choco") [下载](https://chocolatey.org/api/v2/package/chocolatey) [它是什么？](https://chocolatey.org/why-chocolatey)
+ #### [命令行工具](https://kendall79.github.io/cmdline-tools.html "kendall79.github.io")
+  - chocolatey
 
 ## 可以获取的文档
  #### 编程语言:
