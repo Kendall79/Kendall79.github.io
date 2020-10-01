@@ -4,7 +4,7 @@
 ## 语言: 中文
 
 ## 可以获取的下载
- #### [操作系统镜像](https://kendall79.github.io/img.html "kendall79.github.io")
+ #### [操作系统镜像](https://kendall79.github.io/osimg.html "kendall79.github.io")
   - Linux 系统镜像
   - Windows 系统镜像
  #### [软件](https://kendall79.github.io/soft.html "kendall79.github.io")
