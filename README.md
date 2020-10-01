@@ -1,3 +1,3 @@
 # Kendall79.github.io
-Simple Searcher
+Searcher
 https://kendall79.github.io
