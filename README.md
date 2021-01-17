@@ -1,8 +1,8 @@
 # Kendall79.github.io
 >搜索器/资料归档器。请访问: [kendall79.github.io](https://kendall79.github.io "kendall79.github.io")
 
-## Languages: 
-  - Chinese-Simplified
+## 语言: 
+  - 简体中文（仅）
 
 ## 可以获取的下载
 
