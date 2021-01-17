@@ -1,0 +1,130 @@
+﻿<!--
+--	index.html
+--	搜索
+-->
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<title>搜索</title>
+
+<link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+<link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+<link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
+
+<style>
+.other {
+	float:right;
+}
+
+</style>
+
+</head>
+
+<body>
+	<a href="archive.html" class="other" target="_blank">归档</a>
+
+<center>
+	<br><br><br><br>
+	<a href="https://github.com/" target="_blank"><img src="github.png"></img></a><br><br>
+	所有结果<input id="allResults" type="checkbox"></input>
+	<input id="keyword" type="text" onKeyDown="checkEnter()" width="100" maxLength="255" autofocus></input>
+	<button onClick="search()">搜索</button>
+	<br><br>
+	<button onClick="library()">搜索程序库/包</button>
+	<button onClick="solution()">搜索解决方案</button>
+	<button onClick="microsoftDoc()">搜索微软文档</button>
+	<br>
+	<button onClick="cppHelp()">针对 C++ 搜索</button>
+	<button onClick="javaHelp()">针对 Java 搜索</button>
+	<button onClick="pythonHelp()">针对 Python 搜索</button>
+</center>
+
+<script>
+//检查Enter键
+function checkEnter() {
+	if (event.keyCode==13) {
+		search();
+	}
+}
+
+//搜索(内部)
+function get(urls) {
+	var keyword = document.getElementById("keyword").value;
+	if (keyword.length == 0) {
+		return;
+	}
+
+	if (urls == null) {
+		return;
+	}
+
+	var allResults = document.getElementById("allResults").checked;
+	if (allResults) {
+		for(var i = 0; i < urls.length; i++) {
+			window.open(urls[i] + keyword);
+		}
+	} else {
+		if (urls.length > 0) {
+			window.open(urls[0] + keyword);
+		}
+	}
+}
+
+//常规搜索
+function search() {
+	const URLS = ["https://bing.com/search?q=",
+		"https://www.baidu.com/s?ie=utf-8&wd=",
+		"https://zh.wikibooks.org/w/index.php?search=",
+		"https://google.com/search?q="];
+	get(URLS);
+}
+	
+//搜索解决方案
+function solution() {
+	const URLS = ["https://stackoverflow.com/search?q=",
+		"https://www.zhihu.com/search?q=",
+		"https://so.csdn.net/so/search/s.do?q="];
+	get(URLS);
+}
+
+//搜索微软文档
+function microsoftDoc() {
+	const URLS = ["https://docs.microsoft.com/en-us/search/?search=",
+		"https://so.csdn.net/so/search/s.do?q="];
+	get(URLS);
+}
+
+//搜索程序库/包
+function library() {
+	const URLS = [ "https://github.com/search?q=",
+		"https://sourceforge.net/directory/?q=",
+		"https://stackoverflow.com/search?q="];
+	get(URLS);
+}
+
+//针对C++搜索
+function cppHelp() {
+	const URLS = ["https://zh.cppreference.com/mwiki/index.php?search=",
+		"http://www.cplusplus.com/search.do?q=",
+		"https://docs.microsoft.com/en-us/search/?search=",
+		"https://so.csdn.net/so/search/s.do?q="];
+	get(URLS);
+}
+	
+//针对Java搜索
+function javaHelp() {
+	//const URLS = [];
+	//get(URLS);
+}
+
+//针对Python搜索
+function pythonHelp() {
+	//const URLS = [];
+	//get(URLS);
+}
+
+</script>
+
+</body>
+
+</html>
