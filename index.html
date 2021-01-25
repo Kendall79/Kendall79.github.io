@@ -1,0 +1,158 @@
+﻿<!--
+-	index.html
+-	搜索
+-->
+<html lang="zh-cn">
+
+<head>
+	<meta charset="utf-8">
+	<title>搜索</title>
+
+	<link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+	<link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+	<link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
+
+	<style type="text/css"> 
+		.right { float: right; } 
+		.rs { float: right; font-size: 70%; } 
+	</style>
+</head>
+
+<body onLoad="load()">
+	<p id="out"></p>
+
+<script type="text/javascript">
+
+function load() {
+	var out=document.getElementById("out");
+
+	var str = "<p class='rs'>最后修改时间: 2021/01/25 18:23:32</p><br><br>";
+	const RIGHTS = ["archive.html"];
+	const RIGHT_TEXTS = ["归档"];
+	for(var i = 0; i < RIGHTS.length; ++i) {
+		str += "<a href='" + RIGHTS[i] + "' class='right' target='_blank'>" + RIGHT_TEXTS[i] + "</a>";
+		if (i < RIGHTS.length - 1) {
+			str += "<br>";
+		}
+	}
+	str += "<br> <br>";
+	const FUNCTIONS = [
+		"clear",
+		"search",
+		"library",
+		"solution",
+		"microsoftDoc",
+		"cppHelp",
+		"javaHelp",
+		"pythonHelp"
+	];
+	const FUNCTION_TEXTS = [
+		"清空",
+		"搜索",
+		"搜索程序库/包",
+		"搜索解决方案",
+		"搜索微软文档",
+		"针对 C++ 搜索",
+		"针对 Java 搜索",
+		"针对 Python 搜索",
+	];
+
+	str += "<center> <div height='50%'>";
+	str += "<a href='https://github.com/' target='_blank'><img src='github.png'></img></a> <br> <br>";
+	str += "<span>所有结果</span> <input id='allResults' type='checkbox'></input>";
+	str += "<input id='keyword' type='text' onKeyDown='checkEnter()' width='100' maxLength='255' autofocus></input>";
+
+	for(var i = 0; i < FUNCTIONS.length; ++i) {
+		str += "<button onClick='" + FUNCTIONS[i] + "()'>" + FUNCTION_TEXTS[i] + "</button>";
+		if (i == 1) {
+			str += "<br> <br>";
+		} else if (i == 4) {
+			str += "<br>";
+		}
+	}
+	str += "</div> </center>";
+	out.innerHTML=str;
+}
+
+// 清空
+function clear() { document.getElementById("keyword").value=""; }
+
+// 检查Enter键
+function checkEnter() { if (event.keyCode==13) { search(); } }
+
+// 搜索(内部)
+function get(urls) {
+	var keyword = document.getElementById("keyword").value;
+	if (keyword.length == 0 || urls.length == 0) { return; }
+
+	var allResults = document.getElementById("allResults").checked;
+	if (allResults) {
+		for(var i = 0; i < urls.length; i++) { window.open(urls[i] + keyword); }
+	} else { window.open(urls[0] + keyword); }
+}
+
+// 常规搜索
+function search() {
+	const URLS = [
+		"https://bing.com/search?q=",
+		"https://www.baidu.com/s?ie=utf-8&wd=",
+		"https://zh.wikibooks.org/w/index.php?search=",
+		"https://google.com/search?q="
+	];
+	get(URLS);
+}
+
+// 搜索解决方案
+function solution() {
+	const URLS = [
+	"https://stackoverflow.com/search?q=",
+		"https://www.zhihu.com/search?q=",
+		"https://so.csdn.net/so/search/s.do?q="
+	];
+	get(URLS);
+}
+
+// 搜索微软文档
+function microsoftDoc() {
+	const URLS = [
+		"https://docs.microsoft.com/en-us/search/?search=",
+		"https://so.csdn.net/so/search/s.do?q="
+	];
+	get(URLS);
+}
+
+// 搜索程序库/包
+function library() {
+	const URLS = [
+		"https://github.com/search?q=",
+		"https://sourceforge.net/directory/?q=",
+		"https://stackoverflow.com/search?q="
+	];
+	get(URLS);
+}
+
+// 针对C++搜索
+function cppHelp() {
+	const URLS = [
+		"https://zh.cppreference.com/mwiki/index.php?search=",
+		"http:// www.cplusplus.com/search.do?q=",
+		"https://docs.microsoft.com/en-us/search/?search=",
+		"https://so.csdn.net/so/search/s.do?q="
+	];
+	get(URLS);
+}
+
+// 针对Java搜索
+function javaHelp() {
+
+}
+
+// 针对Python搜索
+function pythonHelp() {
+
+}
+
+</script>
+
+</body>
+</html>
