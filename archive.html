@@ -1,7 +1,10 @@
-﻿<!--
+<!--STATUS OK-->
+
+<!--
 -	archive.html
 -	归档
 -->
+
 <html lang="zh-cn">
 
 <head>
@@ -9,387 +12,396 @@
     <title>归档</title>
 
     <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
-    <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
-    <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg">
+    <link rel="alternate icon" class="js-site-favicon" type="image/png"
+        href="https://github.githubassets.com/favicons/favicon.png">
+    <link rel="icon" class="js-site-favicon" type="image/svg+xml"
+        href="https://github.githubassets.com/favicons/favicon.svg">
 
     <style type="text/css">
-		.right { float: right; } 
-		.rs { float: right; font-size: 70%; } 
+        .right {
+            float: right;
+        }
+
+        .rs {
+            float: right;
+            font-size: 70%;
+        }
     </style>
 </head>
 
 <body onload="load()">
     <p id="out"></p>
 
-<script type="text/javascript">
-const EMPTY_STRING = "";
-const TABLE_HEAD = "<table border='1' width='50%'>";
-const TABLE_END = "</table>";
-const TABLE_TITLE_HEAD = TABLE_HEAD + " <tr> <th> <center>";
-const TABLE_TITLE_END = "</center> </th> </tr> " + TABLE_END;
+    <script type="text/javascript">
+        const EMPTY_STRING = "";
+        const TABLE_HEAD = "<table border='1' width='50%'>";
+        const TABLE_END = "</table>";
+        const TABLE_TITLE_HEAD = TABLE_HEAD + " <tr> <th> <center>";
+        const TABLE_TITLE_END = "</center> </th> </tr> " + TABLE_END;
 
-function load() {
-	var out = document.getElementById("out");
-    
-	var str = "<p class='rs'>最后修改时间: 2021/01/25 18:25:36</p><br><br>";
+        function load() {
+            var out = document.getElementById("out");
 
-    str += "<center>";
-	const RIGHTS = ["https://kendall79.github.io/"];
-	const RIGHT_TEXTS = ["搜索"];
-	for(var i = 0; i < RIGHTS.length; ++i) {
-		str += "<a href='" + RIGHTS[i] + "' class='right' target='_blank'>" + RIGHT_TEXTS[i] + "</a> <br>";
-	}
+            var str = "<p class='rs'>最后修改时间: 2021/01/25 18:25:36</p><br><br>";
+
+            str += "<center>";
+            const RIGHTS = ["https://kendall79.github.io/"];
+            const RIGHT_TEXTS = ["搜索"];
+            for (var i = 0; i < RIGHTS.length; ++i) {
+                str += "<a href='" + RIGHTS[i] + "' class='right' target='_blank'>" + RIGHT_TEXTS[i] + "</a> <br>";
+            }
 
 
-    // 添加列表
-    var listNamesSet = [
-        null,
-        "程序设计语言",
-        EMPTY_STRING,
-        EMPTY_STRING
-    ];
+            // 添加列表
+            var listNamesSet = [
+                null,
+                "程序设计语言",
+                EMPTY_STRING,
+                EMPTY_STRING
+            ];
 
-    var namesSet = [
-        "指南",
-        "C++ 程序设计语言",
-        "Java 程序设计语言",
-        "Python 程序设计语言"
-    ];
-	
-	var addrsSet = [
-        // 指南
-        [
-            "https://zh-google-styleguide.readthedocs.io/",
-            "https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md"
-        ],
-        // C++ 程序设计语言
-        [
-            "https://isocpp.org/",
-            "https://www.stroustrup.com/bs_faq.html", 
-            "https://www.stroustrup.com/glossary.html", 
-            "https://www.stroustrup.com/compilers.html", 
-            "https://www.stroustrup.com/applications.html", 
-            "http://www.trumphurst.com/cpplibs1.html",
-            "https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md"
-        ],
-        [
-            "https://www.java.com/",
-            "https://java.com/zh-CN/download/manual.jsp"
-        ],
-        [
-            "https://www.python.org/",
-            "https://www.python.org/downloads/"
-        ]
-    ];
-	var addrTextsSet = [
-        // 指南
-        [
-            "Google 开源项目风格指南", 
-            "C++核心指南",
-        ],
-        // C++ 程序设计语言
-        [
-            "ISO C++", 
-            "C++常见问题解答", 
-            "C++词汇表", 
-            "C++编译器的不完整列表", 
-            "C++应用程序例举", 
-            "C++库", 
-            "C++核心指南"
-        ],
-        [
-            "Java 程序设计语言",
-            "下载JavaSE JDK"
-        ],
-        [
-            "Python 程序设计语言",
-            "下载Python"
-        ]
-    ];
-    for(var i = 0; i < namesSet.length; ++i) {
-        var newline=true;
-        if(i==0){
-            // 第一项不需要换行
-            newline=false;
+            var namesSet = [
+                "指南",
+                "C++ 程序设计语言",
+                "Java 程序设计语言",
+                "Python 程序设计语言"
+            ];
+
+            var addrsSet = [
+                // 指南
+                [
+                    "https://zh-google-styleguide.readthedocs.io/",
+                    "https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md"
+                ],
+                // C++ 程序设计语言
+                [
+                    "https://isocpp.org/",
+                    "https://www.stroustrup.com/bs_faq.html",
+                    "https://www.stroustrup.com/glossary.html",
+                    "https://www.stroustrup.com/compilers.html",
+                    "https://www.stroustrup.com/applications.html",
+                    "http://www.trumphurst.com/cpplibs1.html",
+                    "https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md"
+                ],
+                [
+                    "https://www.java.com/",
+                    "https://java.com/zh-CN/download/manual.jsp"
+                ],
+                [
+                    "https://www.python.org/",
+                    "https://www.python.org/downloads/"
+                ]
+            ];
+            var addrTextsSet = [
+                // 指南
+                [
+                    "Google 开源项目风格指南",
+                    "C++核心指南",
+                ],
+                // C++ 程序设计语言
+                [
+                    "ISO C++",
+                    "C++常见问题解答",
+                    "C++词汇表",
+                    "C++编译器的不完整列表",
+                    "C++应用程序例举",
+                    "C++库",
+                    "C++核心指南"
+                ],
+                [
+                    "Java 程序设计语言",
+                    "下载JavaSE JDK"
+                ],
+                [
+                    "Python 程序设计语言",
+                    "下载Python"
+                ]
+            ];
+            for (var i = 0; i < namesSet.length; ++i) {
+                var newline = true;
+                if (i == 0) {
+                    // 第一项不需要换行
+                    newline = false;
+                }
+                if (listNamesSet[i] != null && listNamesSet[i].length > 0) {
+                    str += addTitle(listNamesSet[i], newline);
+
+                    // 有标题则不需要换行
+                    newline = false;
+                }
+                if (listNamesSet[i] == EMPTY_STRING) {
+                    // 标题为空（空串而非null）表示当前子表归类于当前创建的父表
+
+                    newline = false;
+                }
+                str += addList(namesSet[i], addrsSet[i], addrTextsSet[i], newline);
+            }
+
+            // 添加表
+            const ANY = "不限", OTHER = "其它";
+            const STR_LANGS = ["C/C++", "C++", "Java", "Python", "C#"];
+            const PLATFORMS = ["Linux", "Windows"];
+
+            const TABLE_NAMES = ["库/包/框架", "命令工具", "软件", "操作系统镜像"];
+
+            const NAMES_SET = [
+                // 库/包/框架
+                ["JSOUP", "QT", "JsonCpp"],
+                // 命令工具
+                ["7z", "choco", "Doxygen", "wget"],
+                // 软件
+                ["7z-GUI", "Bandizip", "Doxygen-GUI", "Vmware", "Virtual Box"],
+                // 操作系统镜像
+                ["Linux", "Ubuntu", "Windows"]
+            ];
+            const PROGRAM_TEXTS = ["名称", "说明", "更多版本", "平台"];
+            const TEXTS_SET = [
+                // 库/包/框架
+                ["名称", "说明", "语言", "平台"],
+                // 命令工具
+                PROGRAM_TEXTS,
+                // 软件
+                PROGRAM_TEXTS,
+                // 操作系统镜像
+                ["名称", "更多版本"]
+            ];
+            const MULTI_TEXTS_SET = [
+                // 库/包/框架
+                [
+                    // jsoup
+                    [
+                        "https://github.com/jhy/jsoup/",
+                        "HTML解析器",
+                        STR_LANGS[2],
+                        ANY
+                    ],
+                    // QT
+                    [
+                        "http://download.qt.io/",
+                        "界面编程库",
+                        STR_LANGS[1],
+                        ANY
+                    ],
+                    [
+                        "https://github.com/open-source-parsers/jsoncpp/",
+                        "JSON解析器",
+                        STR_LANGS[1],
+                        ANY
+                    ]
+                ],
+                // 命令工具
+                [
+                    // 7z
+                    [
+                        "https://www.7-zip.org/",
+                        "压缩/解压缩文件",
+                        "<a href='https://www.7-zip.org/faq.html' target='_blank'>转到</a>",
+                        ANY
+                    ],
+                    // choco
+                    [
+                        "https://chocolatey.org/api/v2/package/chocolatey",
+                        "安装软件",
+                        "<a href='https://chocolatey.org/install' target='_blank'>转到</a>",
+                        PLATFORMS[1]
+                    ],
+                    [
+                        "http://www.doxygen.org/",
+                        "从项目源代码生成文档",
+                        "<a href='https://www.doxygen.nl/download.html' target='_blank'>转到</a>",
+                        ANY
+                    ],
+                    // wget
+                    [
+                        "https://eternallybored.org/misc/wget/",
+                        "下载文件",
+                        "<a href='https://www.gnu.org/software/wget/' target='_blank'>转到</a>",
+                        ANY
+                    ]
+                ],
+                // 软件
+                [
+                    // 7z
+                    [
+                        "https://www.7-zip.org/download.html/",
+                        "压缩/解压缩文件",
+                        "<a href='https://www.7-zip.org/download.html/' target='_blank'>转到</a>",
+                        ANY
+                    ],
+                    // Bandizip
+                    [
+                        "https://www.bandisoft.com/bandizip/dl.php?online/",
+                        "压缩/解压缩文件",
+                        "<a href='https://www.bandisoft.com/bandizip/' target='_blank'>转到</a>",
+                        PLATFORMS[1]
+                    ],
+                    [
+                        "http://www.doxygen.org/",
+                        "从项目源代码生成文档",
+                        "<a href='https://www.doxygen.nl/download.html' target='_blank'>转到</a>",
+                        ANY
+                    ],
+                    // Vmware
+                    [
+                        "https://www.vmware.com/",
+                        "适用于现代操作系统的虚拟机",
+                        "<a href='https://www.vmware.com/' target='_blank'>转到</a>",
+                        ANY
+                    ],
+                    // Virtual Box
+                    [
+                        "https://www.virtualbox.org/wiki/Downloads/",
+                        "适用于现代操作系统的虚拟机",
+                        "<a href='https://www.virtualbox.org/wiki/Downloads/' target='_blank'>转到</a>",
+                        ANY
+                    ]
+                ],
+                // 操作系统镜像
+                [
+                    // Linux
+                    [
+                        "https://linux.org/pages/download/",
+                        "<a href='https://linux.org/pages/download/' target='_blank'>转到</a>",
+                    ],
+                    // Ubuntu
+                    [
+                        "https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso",
+                        "<a href='https://releases.ubuntu.com/' target='_blank'>转到</a>",
+                    ],
+                    // Windows
+                    [
+                        "https://msdn.itellyou.cn/",
+                        "<a href='https://msdn.itellyou.cn/' target='_blank'>转到</a>",
+                    ]
+                ]
+            ];
+
+            for (var i = 0; i < NAMES_SET.length; ++i) {
+                str += addTable(TABLE_NAMES[i], NAMES_SET[i], TEXTS_SET[i], MULTI_TEXTS_SET[i]);
+            }
+
+
+            // 添加列表
+            listNamesSet = [
+                "脚本程序设计语言",
+                "实验室",
+                "杂项"
+            ];
+
+            namesSet = [
+                "Lua 程序设计语言",
+                "程序设计实验室",
+                "在线学习计算机程序设计(杂项)"
+            ];
+
+            const BILIBILI_VIDEO_ADDR = "https://www.bilibili.com/video";
+            addrsSet = [
+                [
+                    "https://www.lua.org/"
+                ],
+                [
+                    "https://pintia.cn/",
+                    "https://leetcode.com/"
+                ],
+                [
+                    BILIBILI_VIDEO_ADDR + "/BV1os411h77o",
+                    BILIBILI_VIDEO_ADDR + "/BV1et411b73Z",
+                    BILIBILI_VIDEO_ADDR + "/BV1kx411h7jv",
+                    BILIBILI_VIDEO_ADDR + "/BV1mE411x7Wt",
+                    BILIBILI_VIDEO_ADDR + "/BV1wD4y1o7AS",
+                ]
+            ];
+            addrTextsSet = [
+                [
+                    "Lua 程序设计语言"
+                ],
+                [
+                    "Pintia 实验室",
+                    "LeetCode 实验室"
+                ],
+                [
+                    "在线学习 C 程序设计语言",
+                    "在线学习 C++ 程序设计语言</a>",
+                    "在线学习 Java 程序设计语言(JDK8)",
+                    "在线学习 Java 程序设计语言(JDK13)",
+                    "在线学习 Python 程序设计语言"
+                ]
+            ];
+            for (var i = 0; i < namesSet.length; ++i) {
+                var newline = true;
+                if (listNamesSet[i] != null && listNamesSet[i].length > 0) {
+                    str += addTitle(listNamesSet[i], newline);
+
+                    // 有标题则不需要换行
+                    newline = false;
+                }
+                if (listNamesSet[i] == EMPTY_STRING) {
+                    // 标题为空（空串而非null）表示当前子表归类于当前创建的父表
+
+                    newline = false;
+                }
+                str += addList(namesSet[i], addrsSet[i], addrTextsSet[i], newline);
+            }
+
+            str += "<br> </center>";
+            out.innerHTML = str;
         }
-        if(listNamesSet[i]!=null && listNamesSet[i].length > 0){
-            str += addTitle(listNamesSet[i],newline);
 
-            // 有标题则不需要换行
-            newline=false;
+        function addTitle(title, newline) {
+            var str = "";
+            if (newline) {
+                str = "<br> <br>";
+            }
+            str += TABLE_TITLE_HEAD + "<h3> " + title + "</h3>" + TABLE_TITLE_END;
+            return str;
         }
-        if(listNamesSet[i] == EMPTY_STRING){
-            // 标题为空（空串而非null）表示当前子表归类于当前创建的父表
 
-            newline=false;
+        function addList(title, addrs, texts, newline) {
+            var str = "";
+            if (newline) {
+                str += "<br> <br>";
+            }
+            str += TABLE_TITLE_HEAD + "<h3>" + title + "</h3>" + TABLE_TITLE_END;
+            str += TABLE_TITLE_HEAD;
+            for (var i = 0; i < addrs.length; ++i) {
+                str += "<a href='" + addrs[i] + "'" + " target='_blank'>" + texts[i] + "</a>";
+                if (i < addrs.length - 1) {
+                    str += "<br>";
+                }
+            }
+            str += TABLE_TITLE_END;
+            return str;
         }
-        str += addList(namesSet[i],addrsSet[i],addrTextsSet[i],newline);
-    }
 
-    // 添加表
-    const ANY="不限", OTHER="其它";
-    const STR_LANGS=["C/C++", "C++", "Java", "Python", "C#"];
-    const PLATFORMS=["Linux", "Windows"];
+        function addTable(title, names, texts, multiTexts) {
+            var str = "";
 
-    const TABLE_NAMES=["库/包/框架","命令工具","软件","操作系统镜像"];
+            str += "<br> <br>";
+            str += TABLE_TITLE_HEAD + "<h3> " + title + "</h3>" + TABLE_TITLE_END;
+            str += TABLE_HEAD;
 
-    const NAMES_SET = [ 
-        // 库/包/框架
-        ["JSOUP", "QT", "JsonCpp"],
-        // 命令工具
-        ["7z", "choco", "Doxygen", "wget"],
-        // 软件
-        ["7z-GUI", "Bandizip", "Doxygen-GUI", "Vmware", "Virtual Box"],
-        // 操作系统镜像
-        ["Linux", "Ubuntu", "Windows"]
-    ];
-    const PROGRAM_TEXTS = ["名称", "说明", "更多版本", "平台"];
-    const TEXTS_SET = [ 
-        // 库/包/框架
-        ["名称", "说明", "语言", "平台"],
-        // 命令工具
-        PROGRAM_TEXTS,
-        // 软件
-        PROGRAM_TEXTS,
-        // 操作系统镜像
-        ["名称", "更多版本"]
-    ];
-    const MULTI_TEXTS_SET = [
-        // 库/包/框架
-        [
-            // jsoup
-            [
-                "https://github.com/jhy/jsoup/",
-                "HTML解析器",
-                STR_LANGS[2],
-                ANY
-            ],
-            // QT
-            [
-                "http://download.qt.io/",
-                "界面编程库",
-                STR_LANGS[1],
-                ANY
-            ],
-            [
-                "https://github.com/open-source-parsers/jsoncpp/",
-                "JSON解析器",
-                STR_LANGS[1],
-                ANY
-            ]
-        ],
-        // 命令工具
-        [
-            // 7z
-            [
-                "https://www.7-zip.org/",
-                "压缩/解压缩文件",
-                "<a href='https://www.7-zip.org/faq.html' target='_blank'>转到</a>",
-                ANY
-            ],
-            // choco
-            [
-                "https://chocolatey.org/api/v2/package/chocolatey",
-                "安装软件",
-                "<a href='https://chocolatey.org/install' target='_blank'>转到</a>",
-                PLATFORMS[1]
-            ],
-            [
-                "http://www.doxygen.org/",
-                "从项目源代码生成文档",
-                "<a href='https://www.doxygen.nl/download.html' target='_blank'>转到</a>",
-                ANY
-            ],
-            // wget
-            [
-                "https://eternallybored.org/misc/wget/",
-                "下载文件",
-                "<a href='https://www.gnu.org/software/wget/' target='_blank'>转到</a>",
-                ANY
-            ]
-        ],
-        // 软件
-        [
-            // 7z
-            [
-                "https://www.7-zip.org/download.html/",
-                "压缩/解压缩文件",
-                "<a href='https://www.7-zip.org/download.html/' target='_blank'>转到</a>",
-                ANY
-            ],
-            // Bandizip
-            [
-                "https://www.bandisoft.com/bandizip/dl.php?online/",
-                "压缩/解压缩文件",
-                "<a href='https://www.bandisoft.com/bandizip/' target='_blank'>转到</a>",
-                PLATFORMS[1]
-            ],
-            [
-                "http://www.doxygen.org/",
-                "从项目源代码生成文档",
-                "<a href='https://www.doxygen.nl/download.html' target='_blank'>转到</a>",
-                ANY
-            ],
-            // Vmware
-            [
-                "https://www.vmware.com/",
-                "适用于现代操作系统的虚拟机",
-                "<a href='https://www.vmware.com/' target='_blank'>转到</a>",
-                ANY
-            ],
-            // Virtual Box
-            [
-                "https://www.virtualbox.org/wiki/Downloads/",
-                "适用于现代操作系统的虚拟机",
-                "<a href='https://www.virtualbox.org/wiki/Downloads/' target='_blank'>转到</a>",
-                ANY
-            ]
-        ],
-        // 操作系统镜像
-        [
-            // Linux
-            [
-                "https://linux.org/pages/download/",
-                "<a href='https://linux.org/pages/download/' target='_blank'>转到</a>",
-            ],
-            // Ubuntu
-            [
-                "https://releases.ubuntu.com/20.04.1/ubuntu-20.04.1-desktop-amd64.iso",
-                "<a href='https://releases.ubuntu.com/' target='_blank'>转到</a>",
-            ],
-            // Windows
-            [
-                "https://msdn.itellyou.cn/",
-                "<a href='https://msdn.itellyou.cn/' target='_blank'>转到</a>",
-            ]
-        ]
-    ];
+            str += "<tr>";
+            for (var i = 0; i < texts.length; ++i) {
+                str += "<th>" + texts[i] + "</th>";
+            }
+            str += "</tr>"
 
-    for(var i = 0; i < NAMES_SET.length; ++i) {
-        str += addTable(TABLE_NAMES[i],NAMES_SET[i],TEXTS_SET[i],MULTI_TEXTS_SET[i]);
-    }
-
-
-    // 添加列表
-    listNamesSet = [
-        "脚本程序设计语言",
-        "实验室",
-        "杂项"
-    ];
-
-    namesSet = [
-        "Lua 程序设计语言",
-        "程序设计实验室",
-        "在线学习计算机程序设计(杂项)"
-    ];
-
-    const BILIBILI_VIDEO_ADDR="https://www.bilibili.com/video";
-	addrsSet = [
-        [
-            "https://www.lua.org/"
-        ],
-        [
-            "https://pintia.cn/",
-	        "https://leetcode.com/"
-        ],
-        [
-            BILIBILI_VIDEO_ADDR + "/BV1os411h77o",
-	        BILIBILI_VIDEO_ADDR + "/BV1et411b73Z",
-	        BILIBILI_VIDEO_ADDR + "/BV1kx411h7jv",
-	        BILIBILI_VIDEO_ADDR + "/BV1mE411x7Wt",
-	        BILIBILI_VIDEO_ADDR + "/BV1wD4y1o7AS",
-        ]
-    ];
-	addrTextsSet = [
-        [
-            "Lua 程序设计语言"
-        ],
-        [
-            "Pintia 实验室",
-            "LeetCode 实验室"
-        ],
-        [
-            "在线学习 C 程序设计语言",
-            "在线学习 C++ 程序设计语言</a>",
-            "在线学习 Java 程序设计语言(JDK8)",
-            "在线学习 Java 程序设计语言(JDK13)",
-            "在线学习 Python 程序设计语言"
-        ]
-    ];
-    for(var i = 0; i < namesSet.length; ++i) {
-        var newline=true;
-        if(listNamesSet[i]!=null && listNamesSet[i].length > 0){
-            str += addTitle(listNamesSet[i],newline);
-
-            // 有标题则不需要换行
-            newline=false;
+            for (var i = 0; i < multiTexts.length; ++i) {
+                str += "<tr>";
+                // 名称作为可跳转地址
+                str += "<td> <center>";
+                str += "<a href='" + multiTexts[i][0] + "' target='_blank'>" + names[i] + "</a>";
+                str += "</center> </td>";
+                for (var j = 1; j < multiTexts[i].length; ++j) {
+                    str += "<td> <center>" + multiTexts[i][j] + "</center> </td>"
+                }
+                str += "</tr>";
+            }
+            str += TABLE_END;
+            return str;
         }
-        if(listNamesSet[i] == EMPTY_STRING){
-            // 标题为空（空串而非null）表示当前子表归类于当前创建的父表
-
-            newline=false;
-        }
-        str += addList(namesSet[i],addrsSet[i],addrTextsSet[i],newline);
-    }
-    
-	str += "<br> </center>";
-	out.innerHTML=str;
-}
-
-function addTitle(title,newline) {
-    var str="";
-    if (newline){
-        str = "<br> <br>";
-    }
-    str += TABLE_TITLE_HEAD + "<h3> " + title + "</h3>" + TABLE_TITLE_END;
-    return str;
-}
-
-function addList(title,addrs,texts,newline) {
-    var str="";
-    if (newline){
-        str += "<br> <br>";
-    }
-    str += TABLE_TITLE_HEAD + "<h3>"+title+"</h3>" + TABLE_TITLE_END;
-    str += TABLE_TITLE_HEAD;
-	for(var i = 0; i < addrs.length; ++i) {
-		str += "<a href='" + addrs[i] + "'" + " target='_blank'>" + texts[i] + "</a>";
-		if (i < addrs.length - 1) {
-			str += "<br>";
-		}
-	}
-    str += TABLE_TITLE_END;
-    return str;
-}
-
-function addTable(title,names,texts,multiTexts) {
-    var str="";
-
-    str += "<br> <br>";
-    str += TABLE_TITLE_HEAD + "<h3> " + title + "</h3>" + TABLE_TITLE_END;
-    str += TABLE_HEAD;
-
-    str += "<tr>";
-	for(var i = 0; i < texts.length; ++i) {
-        str += "<th>" + texts[i] +"</th>";
-    }
-    str += "</tr>"
-
-	for(var i = 0; i < multiTexts.length; ++i) {
-        str += "<tr>";
-        // 名称作为可跳转地址
-        str += "<td> <center>";
-        str += "<a href='" + multiTexts[i][0]+ "' target='_blank'>" + names[i] + "</a>";
-        str += "</center> </td>";
-	    for(var j = 1; j < multiTexts[i].length; ++j) {
-                str += "<td> <center>" +  multiTexts[i][j] + "</center> </td>"
-        }
-        str += "</tr>";
-    }
-    str += TABLE_END;
-    return str;
-}
-</script>
+    </script>
 
 </body>
+
 </html>
