@@ -90,8 +90,7 @@
 		// 清空
 		function clearWord() {
 			var obj = document.getElementById("keyword");
-			if (obj.value.length == 0) { return; }
-			obj.value = "";
+			if (obj.value.length > 0) { obj.value = ""; }
 			putFocus();
 		}
 		// 检查Enter键
