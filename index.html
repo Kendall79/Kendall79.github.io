@@ -1,202 +1,589 @@
 <!--STATUS OK-->
 
-<!--
--	index.html
--	搜索
--->
-
-<!-- HTML5 -->
-<!DOCTYPE HTML>
 <html lang="zh-cn">
 
 <head>
-	<meta charset="utf-8">
-	<title>搜索</title>
+    <meta charset="utf-8">
+    <title>索引</title>
 
-	<link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
-	<link rel="alternate icon" class="js-site-favicon" type="image/png"
-		href="https://github.githubassets.com/favicons/favicon.png">
-	<link rel="icon" class="js-site-favicon" type="image/svg+xml"
-		href="https://github.githubassets.com/favicons/favicon.svg">
+    <link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+    <link rel="alternate icon" class="js-site-favicon" type="image/png"
+        href="https://github.githubassets.com/favicons/favicon.png">
+    <link rel="icon" class="js-site-favicon" type="image/svg+xml"
+        href="https://github.githubassets.com/favicons/favicon.svg">
 
-	<style type="text/css">
-		.right {
-			float: right;
-		}
+    <style type="text/css">
+        table {
+            border: 4px;
+            border-color: cornflowerblue;
+            width: 65%;
+        }
 
-		.rs {
-			float: right;
-			font-size: 70%;
-		}
-	</style>
+        a {
+            color: #0070DB;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0070DB;
+            text-decoration: underline;
+            font-size: 120%;
+        }
+
+        .right {
+            float: right;
+            border-color: cornflowerblue;
+        }
+
+        .remark {
+            color: darkgray;
+            float: right;
+            font-size: 70%;
+        }
+    </style>
 </head>
 
-<body onLoad="load()">
-	<p id="out"></p>
+<body>
+    <span class="remark">更新时间: 2022/07/26 14:34:34</span>
+    <br>
 
-	<script type="text/javascript">
-		function load() {
-			var out = document.getElementById("out");
+    <a href="index.html" class="right">返回</a>
+    <br>
+    <br>
+    <br>
 
-			var str = "<p class='rs'>最后修改时间: 2021/01/28 20:18:27</p><br><br>";
-			const RIGHTS = ["archive.html"];
-			const RIGHT_TEXTS = ["归档"];
-			for (var i = 0; i < RIGHTS.length; ++i) {
-				str += "<a href='" + RIGHTS[i] + "' class='right' target='_blank'>" + RIGHT_TEXTS[i] + "</a>";
-				if (i < RIGHTS.length - 1) {
-					str += "<br>";
-				}
-			}
-			str += "<br> <br>";
-			const FUNCTIONS = [
-				"search",
-				"clearWord",
-				"library",
-				"solution",
-				"microsoftDoc",
-				"cppHelp",
-				"javaHelp",
-				"pythonHelp"
-			];
-			const FUNCTION_TEXTS = [
-				"搜索",
-				"清空",
-				"搜索程序库/包",
-				"搜索解决方案",
-				"搜索微软文档",
-				"针对 C++ 搜索",
-				"针对 Java 搜索",
-				"针对 Python 搜索",
-			];
+    <div align="center">
 
-			str += "<center>";
-			str += "<a href='https://github.com/' target='_blank'><img src='github.png'></img></a> <br> <br>";
-			str += "<span>所有结果</span> <input id='allResults' type='checkbox'></input>";
-			str += "<input id='keyword' type='text' onKeyDown='checkEnter()' width='100' maxLength='255' placeholder=''></input>";
 
-			for (var i = 0; i < FUNCTIONS.length; ++i) {
-				str += "<button onClick='" + FUNCTIONS[i] + "()'>" + FUNCTION_TEXTS[i] + "</button>";
-				if (i == 1) { str += "<br> <br>"; }
-				else if (i == 4) { str += "<br>"; }
-			}
+        <br>
+        <br>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3>编译器/解释器</h3>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
 
-			str += "</center>";
-			out.innerHTML = str;
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3>C++ 语言编译器</h3>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
 
-			putFocus();
-		}
-		// 
-		function putFocus() { document.getElementById("keyword").focus(); }
-		// 清空
-		function clearWord() {
-			var obj = document.getElementById("keyword");
-			if (obj.value.length > 0) { obj.value = ""; }
-			putFocus();
-		}
-		// 检查Enter键
-		function checkEnter() { if (event.keyCode == '\r'.charCodeAt()) { search(); } }
-		// 搜索(内部)
-		function get(urls) {
-			if (urls.length == 0) { return; }
-			var keyword = document.getElementById("keyword").value;
-			if (keyword.length == 0) { return; }
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td>
+                        <center>Visuall Studio</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://visualstudio.microsoft.com/zh-hans/" target="_blank">转到</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
 
-			var allResults = document.getElementById("allResults").checked;
-			if (allResults) { for (var i = 0; i < urls.length; ++i) window.open(urls[i] + keyword); }
-			else { window.open(urls[0] + keyword); }
-		}
+                <tr>
+                    <td>
+                        <center>MinGW</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://nchc.dl.sourceforge.net/project/mingw-w64/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z"
+                                target="_blank">下载</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>Windows</center>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-		/*
-		const DATA=
-			'{' +
-			'	"methods": [' +
-			'		"default": [' +
-			'			"https://bing.com/search?q=",' +
-			'			"https://www.baidu.com/s?ie=utf-8&wd=",' +
-			'			"https://zh.wikibooks.org/w/index.php?search=",' +
-			'			"https://google.com/search?q="' +
-			'		],' +
-			'		"cpp": [' +
-			'			"https://zh.cppreference.com/mwiki/index.php?search=",' +
-			'			"http://www.cplusplus.com/search.do?q=",' +
-			'			"https://docs.microsoft.com/en-us/search/?search=",' +
-			'			"https://so.csdn.net/so/search/s.do?q="' +
-			'		],' +
-			'		"java": [' +
-			'			
-			'		],' +
-			'		"python": [' +
-			'			
-			'		],' +
-			'		"solutions": [' +
-			'			
-			'		],' +
-			'		"libraries": [' +
-			'			
-			'		],' +
-			'		"msdocs": [' +
-			'			
-			'		]' +
-			'	]' +
-			'}';
-		*/
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3>Java 语言编译器</h3>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
 
-		// 常规搜索
-		function search() {
-			const URLS = [
-				"https://bing.com/search?q=",
-				"https://www.baidu.com/s?ie=utf-8&wd=",
-				"https://zh.wikibooks.org/w/index.php?search=",
-				"https://google.com/search?q="
-			];
-			get(URLS);
-		}
-		// 搜索解决方案
-		function solution() {
-			const URLS = [
-				"https://stackoverflow.com/search?q=",
-				"https://www.zhihu.com/search?q=",
-				"https://so.csdn.net/so/search/s.do?q="
-			];
-			get(URLS);
-		}
-		// 搜索微软文档
-		function microsoftDoc() {
-			const URLS = [
-				"https://docs.microsoft.com/en-us/search/?search=",
-				"https://so.csdn.net/so/search/s.do?q="
-			];
-			get(URLS);
-		}
-		// 搜索程序库/包
-		function library() {
-			const URLS = [
-				"https://github.com/search?q=",
-				"https://sourceforge.net/directory/?q=",
-				"https://stackoverflow.com/search?q="
-			];
-			get(URLS);
-		}
-		// 针对C++搜索
-		function cppHelp() {
-			const URLS = [
-				"https://zh.cppreference.com/mwiki/index.php?search=",
-				"http://www.cplusplus.com/search.do?q=",
-				"https://docs.microsoft.com/en-us/search/?search=",
-				"https://so.csdn.net/so/search/s.do?q="
-			];
-			get(URLS);
-		}
-		// 针对Java搜索
-		function javaHelp() {
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td>
+                        <center>Java-8u202</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://repo.huaweicloud.com/java/jdk/8u202-b08/" target="_blank">转到</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://repo.huaweicloud.com/java/jdk/8u202-b08/jdk-8u202-windows-x64.exe"
+                                target="_blank">下载</a>
+                        </center>
+                    </td>
+                </tr>
 
-		}
-		// 针对Python搜索
-		function pythonHelp() {
+                <tr>
+                    <td>
+                        <center>Java-10.0.2</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://repo.huaweicloud.com/java/jdk/10.0.2+13/" target="_blank">转到</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://repo.huaweicloud.com/java/jdk/10.0.2+13/jdk-10.0.2_windows-x64_bin.exe"
+                                target="_blank">下载</a>
+                        </center>
+                    </td>
+                </tr>
 
-		}
+                <tr>
+                    <td>
+                        <center>Java-12.0.2</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://repo.huaweicloud.com/java/jdk/12.0.2+10/" target="_blank">转到</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://repo.huaweicloud.com/java/jdk/12.0.2+10/jdk-12.0.2_windows-x64_bin.exe"
+                                target="_blank">下载</a>
+                        </center>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-	</script>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3>Python 语言解释器</h3>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td>
+                        <center>Python-3.10.5</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://www.python.org/downloads/release/python-3105/" target="_blank">转到</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://www.python.org/ftp/python/3.10.5/python-3.10.5-amd64.exe"
+                                target="_blank">下载</a>
+                        </center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>Python-3.6.0</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://www.python.org/downloads/release/python-360/" target="_blank">转到</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://www.python.org/ftp/python/3.6.0/python-3.6.0-amd64.exe"
+                                target="_blank">下载</a>
+                        </center>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3>IDE/构建工具/编辑器</h3>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>说明</th>
+                    <th>链接</th>
+                    <th>语言</th>
+                    <th>平台</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>CMake构建工具</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://github.com/Kitware/CMake/releases/download/v3.23.2/cmake-3.23.2-windows-x86_64.msi"
+                                target="_blank">下载</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>C/C++</center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>Visuall Studio Code</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://az764295.vo.msecnd.net/stable/3b889b090b5ad5793f524b5d1d39fda662b96a2a/VSCodeUserSetup-x64-1.69.2.exe"
+                                target="_blank">下载</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3>库/包/框架</h3>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>说明</th>
+                    <th>链接</th>
+                    <th>语言</th>
+                    <th>平台</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>Boost库二进制包</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://sourceforge.net/projects/boost/files/boost-binaries/"
+                                target="_blank">转到</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>C++</center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>QT界面库</center>
+                    </td>
+                    <td>
+                        <center><a href="http://download.qt.io/" target="_blank">下载</a></center>
+                    </td>
+                    <td>
+                        <center>C++</center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>EGE图形库</center>
+                    </td>
+                    <td>
+                        <center><a href="https://xege.org/download/ege20.08_all.7z" target="_blank">下载</a></center>
+                    </td>
+                    <td>
+                        <center>C++</center>
+                    </td>
+                    <td>
+                        <center>Windows</center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>C++ JSON解析器</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://github.com/open-source-parsers/jsoncpp/" target="_blank">转到</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>C++</center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3>指南</h3>
+                        <a href="https://zh-google-styleguide.readthedocs.io/" target="_blank">Google 开源项目风格指南</a>
+                        <br>
+                        <a href="https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md"
+                            target="_blank">C++核心指南</a>
+                        <br>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3> 命令行工具</h3>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>说明</th>
+                    <th>名称</th>
+                    <th>链接</th>
+                    <th>平台</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>项目管理工具</center>
+                    </td>
+                    <td>
+                        <center><a href="https://git-scm.com/" target="_blank">Git</a></center>
+                    </td>
+                    <td>
+                        <center><a
+                                href="https://github.com/git-for-windows/git/releases/download/v2.37.1.windows.1/Git-2.37.1-64-bit.exe"
+                                target="_blank">下载</a></center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>下载文件</center>
+                    </td>
+                    <td>
+                        <center><a href="https://eternallybored.org/misc/wget/" target="_blank">wget</a></center>
+                    </td>
+                    <td>
+                        <center><a href="https://eternallybored.org/misc/wget/1.21.3/64/wget.exe" target="_blank">下载</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>生成项目文档</center>
+                    </td>
+                    <td>
+                        <center><a href="https://www.doxygen.nl" target="_blank">Doxygen</a></center>
+                    </td>
+                    <td>
+                        <center><a href="https://www.doxygen.nl/files/doxygen-1.9.4-setup.exe" target="_blank">下载</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3> 软件</h3>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>说明</th>
+                    <th>名称</th>
+                    <th>链接</th>
+                    <th>平台</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>虚拟机软件</center>
+                    </td>
+                    <td>
+                        <center>
+                            <a href="https://www.virtualbox.org/wiki/Downloads/" target="_blank">Virtual Box</a>
+                        </center>
+                    </td>
+                    <td>
+                        <center><a
+                                href="https://download.virtualbox.org/virtualbox/6.1.36/VirtualBox-6.1.36-152435-Win.exe"
+                                target="_blank">下载</a></center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>压缩/解压缩文件</center>
+                    </td>
+                    <td>
+                        <center><a href="https://www.7-zip.org/" target="_blank">7zip</a></center>
+                    </td>
+                    <td>
+                        <center><a href="https://www.7-zip.org/a/7z2201-x64.exe" target="_blank">下载</a></center>
+                    </td>
+                    <td>
+                        <center>/</center>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3> 操作系统镜像</h3>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>名称</th>
+                    <th>链接</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center><a href="https://cn.ubuntu.com/" target="_blank">Ubuntu</a></center>
+                    </td>
+                    <td>
+                        <center><a
+                                href="https://mirrors.ustc.edu.cn/ubuntu-releases/22.04/ubuntu-22.04-desktop-amd64.iso"
+                                target="_blank">下载</a></center>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <center>Windows</center>
+                    </td>
+                    <td>
+                        <center><a href="https://msdn.itellyou.cn/" target="_blank">转到</a></center>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <br>
+        <br>
+        <table border="1">
+            <tbody>
+                <tr>
+                    <th>
+                        <h3> 实验室</h3>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <h3>程序设计实验室</h3>
+
+                        <a href="https://pintia.cn/" target="_blank">Pintia 实验室</a>
+                        <br>
+                        <a href="https://leetcode.com/" target="_blank">LeetCode 实验室</a>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <br>
+
+    </div>
 
 </body>
 
