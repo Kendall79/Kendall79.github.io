@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>搜索</title>
+	<title>搜索 (I Love GitHub)</title>
 
 	<link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
 	<link rel="alternate icon" class="js-site-favicon" type="image/png"
@@ -19,51 +19,38 @@
 			text-decoration: none;
 		}
 
-        a:hover {
-            color: #0070DB;
-            text-decoration: underline;
-        }
+		a:hover {
+			color: #0070DB;
+			text-decoration: underline;
+		}
 
 		button {
 			color: white;
 			border-style: none;
 			background-color: #0070DB;
 		}
-
-		.right {
-			float: right;
-			border-color: cornflowerblue;
-		}
-
-		.remark {
-			color: darkgray;
-			float: right;
-			font-size: 70%;
-		}
 	</style>
 </head>
 
 <body onload="putFocus()">
-	<span class="remark">更新时间: 2022/07/26 14:35:46</span>
-	<br>
+	<div align="right">
+		<a href="i.html">索引</a>
+	</div>
 
-	<a href="i.html" class="right" target="_blank">索引</a>
 	<br>
-	<br>
-
 	<div align="center" style="height:220%">
 		<a href="https://github.com/" target="_blank"><img src="github.png"></a>
-		<br>
-		<br>
 
-		<span>所有结果</span>
+		<br>
+		<br>
 		<input id="allResults" type="checkbox">
+		<span>所有结果</span>
 		<input id="keyword" type="text" onkeydown="checkEnter()" maxlength="100">
 		<button onclick="search()">搜索</button>
 		<button onclick="clearWord()">清空</button>
-		<br>
-		<br>
 
+		<br>
+		<br>
 		<button onclick="searchByCpp()" style="width:100px;height:20px">针对 C++ 搜索</button>
 		<button onclick="searchMicrosoftDoc()" style="width:100px;height:20px">搜索微软文档</button>
 		<br>
