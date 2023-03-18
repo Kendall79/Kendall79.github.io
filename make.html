@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+	<meta charset="utf-8">
+	<title>Make (I Love GitHub)</title>
+
+	<link rel="mask-icon" href="https://github.githubassets.com/pinned-octocat.svg" color="#000000">
+	<link rel="alternate icon" class="js-site-favicon" type="image/png"
+		href="https://github.githubassets.com/favicons/favicon.png">
+	<link rel="icon" class="js-site-favicon" type="image/svg+xml"
+		href="https://github.githubassets.com/favicons/favicon.svg">
+
+	<style type="text/css">
+		a {
+			color: rgb(0, 128, 255);
+			text-decoration: none;
+		}
+
+		a:hover {
+			color: rgb(0, 128, 255);
+			text-decoration: underline;
+		}
+
+		.remark {
+			color: gray;
+			font-size: 50%;
+		}
+
+		.console {
+			background-color: black;
+			color: rgb(192, 192, 192);
+			border: 1px solid;
+		}
+
+		star {
+			color: rgb(255, 0, 0);
+		}
+
+		opt {
+			color: rgb(255, 128, 64);
+		}
+
+		string {
+			color: rgb(180, 20, 22);
+		}
+	</style>
+</head>
+
+<body>
+	<div align="right">
+		<span class="remark">更新时间: 2023/03/18 19:57</span>
+		<a href="index.html">返回</a>
+	</div>
+
+	<div>
+		<h1>Make 与 Makefile</h1>
+		以下内容不算知识，因为还不够准确，只是一些个人的理解。一个仅供入门级别的参考。<br>
+		<br>
+		Make 是一个构建 C程序和 C++程序的工具，Makefile 是一种纯文本类型的文件。<br>
+		如果说 Makefile 是一种脚本文件，那么 Make程序 是它的解释器。<br>
+		和其它解释器一样，在遇到无效语法时，Make程序将显示错误并终止，<br>
+		终止就是非正常退出，退出码为非零值，这时整个构建(编译)过程也被终止了。<br>
+		可以将 Makefile理解为针对构建程序的所需步骤(代码)，这些步骤是有序的。<br>
+		比如一个程序需要链接一个静态库，那就要先编译生成静态库的源码，输出文件的类型就是静态库。<br>
+		然后链接这个静态库生成程序。如果顺序相反，程序不能编译成功。<br>
+		所以，执行步骤是要分顺序和层次的。<br>
+		<h1>附录</h1>
+		<h2>
+			<star>*&nbsp;</star>Make (程序)
+		</h2>
+		Make 是 <a href="gcc.html">GCC</a> 编译器的构建工具。<br>
+		<br>
+		<h2>
+			<star>*&nbsp;</star>NMake (程序)<br>
+		</h2>
+		NMake 是 <a href="compiler.html">MSVC</a> 编译器的构建工具。<br>
+		这个“n”的含义暂且不提，也不必了解。以微软的性格肯定会取一个有个性的名。<br>
+		<br>
+		<h2>
+			<star>*&nbsp;</star><a href="cmake.html">CMake</a> (程序)
+		</h2>
+		CMake 可以理解为：生成 C 或 C++ 项目的 Makefile，也可以混合。<br>
+		可以 Make 自然就需要Makefile。至于这个“C”，自然不是“C语言”的“C”，而是“C 和 C++”。<br>
+		<br>
+		它自身也是一个解释器，解释<string>CMakeLists.txt</string>中的代码并根据足够的信息生成 Makefile，<br>
+		这些信息肯定包括：编译器及其版本，操作系统和平台，编译选项。<br>
+		CMake 有着独特的地位，不允许它发生一丝错误。<br>
+		另外，在 Windows 操作系统上， 不仅可以生成 Makefile，<br>
+		还可以生成 Visual Studio 项目。一些人也许会喜欢这一点(笑)。<br>
+		<br>
+		下面是 CMake的用法，如果要生成 Makefile，CMake 必须确定编译器及其版本，以及操作系统和平台。<br>
+		CMake 选项（<star>*</star> 区分大小写）：
+		<br>
+		<h3>
+			<opt>-G</opt> 选项
+		</h3>
+		<opt>G</opt>enerator 的缩写。<br>
+		<br>
+		指定生成器，其实就是为 CMake 设置一个已安装的编译器。<br>
+		也可以不指定，CMake 会自动找编译器。<br>
+		如果生成 Visual Studio 项目，Visual Studio 的版本必须是完整名称，<br>
+		键入<span class="console">cmake --help</span> 将说明一切。<br>
+		如果版本在2019以下，可以用<string>" Win64"</string>设置项目平台为“x64位”，<br>
+		否则（默认）为“x86位（就是32位）”。文本<string>" Win64"</string>中的空格不能省略。<br>
+		如果 Visual Studio 的版本在2019及以上，需要用选项 <opt>-A</opt> 来设置平台，
+		如 <string>"-Ax64"</string>。<br>
+		所以选项 <opt>-A</opt> 是否有意义，要取决于 Visual Studio 的版本是否在2019及以上。<br>
+		也同样说明了选项 <opt>-A</opt> 要求生成器是<string>"Visual Studio"</string>。<br>
+		<br>
+		<h3>
+			<opt>-S</opt> 选项 (仅Windows 支持)
+		</h3>
+		<opt>S</opt>ource 的缩写。<br>
+		<br>
+		设置项目目录，就是设置<string>CMakeLists.txt</string>所在的目录。通常是在项目根。<br>
+		如果当前工作目录是项目根，那么用<string>"."</string>即可，<br>
+		<string>"."</string>指的是当前目录。<string>".."</string>指的是当前目录的上一级目录。<br>
+		<br>
+		注：经常看到有一些项目的构建类似这样：<br>
+		<div class="console">
+			mkdir build<br>
+			cd build<br>
+			cmake ..<br>
+			make<br>
+		</div>
+		<h4>或</h4>
+		<div class="console">
+			mkdir Release<br>
+			cd Release<br>
+			cmake ..<br>
+			make<br>
+		</div><br>
+		以第一种为例，一开始当前工作目录是项目根，创建 build 目录，将项目文件存放在这里。<br>
+		<div class="console">
+			mkdir build<br>
+			cd build<br>
+		</div>
+		的含义是：先创建 build目录，再设置当前工作目录。<br>
+		<br>
+		<div class="console">
+			cmake ..<br>
+		</div>
+		是构建 Makefile要执行的命令行。<br>
+		项目根是当前目录的上一级目录。用<string>".."</string><br>
+		在这里没有设置编译器，CMake 会尝试寻找已安装的编译器，<br>
+		并生成特定的 Makefile (或 Visual Studio 项目)。<br>
+		<br>
+		<div class="console">
+			make<br>
+		</div>
+		是构建（编译）项目要执行的命令行。<br>
+		如果是生成 MSVC编译器的 Makefile并构建项目，<br>
+		先设置生成器为NMake，<span class="console">-G "NMake Makefiles"</span>，<br>
+		然后<span class="console">make</span>用<span class="console">nmake</span>代替。
+		<h3>
+			<opt>-B</opt> 选项 (仅Windows 支持)
+		</h3>
+		<opt>B</opt>uild 的缩写。<br>
+		设置构建项目的输出目录。<br>
+		<br>
+		CMake 在 Make、NMake 之上。<br>
+		在 CMake 支持的平台上，操作系统自然设置好了，<br>
+		如果只安装了一个编译器且可以工作，可以不指定编译器，CMake 会寻找编译器。<br>
+		也就是用不到选项 <opt>-G</opt> 设置生成器。<br>
+		<br>
+		至于 cmake-gui(CMake带界面版)，在熟悉 CMake命令的情况下，操作几次就基本掌握了。<br>
+		不过有一点要注意，cmake-gui在指定目录时，斜杠必须是正斜杠<br>
+		<string>"/"</string>，这就表明如果粘贴一个目录路径，
+		要手动替换所有的反斜杠<string>"\"</string>为正斜杠<string>"/"</string>，<br>
+		可以点击路径框右面的“浏览按钮”(没有字，其实只有一个图标)，<br>
+		选择一个目录，点击确定，cmake-gui会将所有的反斜杠<string>"\"</string>替换为正斜杠<string>"/"</string>。<br>
+		正斜杠<string>"/"</string>是 Linux、Windows等操作系统的通用符号。<br>
+		<br>
+		<b><a href="https://mail.qq.com/" target="_blank">指正</a>（包括批评）到 <a href="https://mail.qq.com/"
+				target="_blank">gkendall@qq.com</a> </b>
+		<br>
+	</div>
+</body>
+
+</html>
