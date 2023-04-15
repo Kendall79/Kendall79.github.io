@@ -1,5 +1,5 @@
 # Kendall79.github.io
->搜索/索引
+>搜索
 >请访问: [kendall79.github.io](https://kendall79.github.io "kendall79.github.io")
 
 ## 语言
